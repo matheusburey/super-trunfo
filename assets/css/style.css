@@ -87,8 +87,9 @@ h2 {
 }
 
 .carta-status input {
-    margin-bottom: 4px;
-    padding: 0.5rem 9.5rem;
+    margin: 2px 2px 0 4px;
+    border: 0;
+    padding: 0.6rem 10.4rem;
     color: #00000000;
     background-color: #00000000;
 }
