@@ -14,7 +14,6 @@ body {
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
-    padding-bottom: 20vh;
 }
 
 .container {
@@ -47,6 +46,7 @@ button {
     border-radius: 5px;
     border: none;
     font-size: 1rem;
+    cursor: pointer;
 }
 
 h2 {
@@ -92,6 +92,7 @@ h2 {
     padding: 0.6rem 10.4rem;
     color: #00000000;
     background-color: #00000000;
+    cursor: pointer;
 }
 
 .carta-status p {
@@ -138,4 +139,11 @@ form {
 
 #placar, #quantidade-cartas {
     color: white;
+}
+footer{
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.563);
+    margin-top: 50px;
+    padding: 20px;
+    text-align: center;
 }
