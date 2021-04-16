@@ -73,7 +73,6 @@ function sortearCarta(){
   console.log(cartaJogador.nome)
 
   document.getElementById("btnSortear").disabled = true;
-  document.getElementById("btnJogar").disabled = false;
 
   exibeCartaJogador()
 }
