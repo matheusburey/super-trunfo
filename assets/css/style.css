@@ -52,35 +52,30 @@ button {
 h2 {
     color: rgb(0, 0, 0);
     letter-spacing: 3px;
+    margin-bottom: 8px;
     text-shadow: 2px 0 0 #2e58b1, -2px 0 0 #2e58b1, 0 2px 0 #2e58b1, 0 -2px 0 #2e58b1, 1px 1px #2e58b1, -1px -1px 0 #2e58b1, 1px -1px 0 #2e58b1, -1px 1px 0 #2e58b1;
 }
 
 #carta-jogador, #carta-maquina {
     width: 360px;
     height: 500px;
-    overflow: auto;
+    overflow: visible;
     border-radius: 8px;
     margin-bottom: 20px;
     margin: 0 auto;
     display: flex;
     align-items: flex-end;
     position: relative;
-    background-size: 360px 500px;
-    background-repeat: no-repeat;
-}
-
-.carta-imagem {
-    border: 1px solid black;
-    height: 100px;
-    margin: 10px;
 }
 
 .fundo {
     width: 360px;
     height: 500px;
+    max-width: 100%;
 }
 
 .carta-status {
+    position: absolute;
     margin: 10px;
     color: white;
     z-index: 2;
@@ -137,9 +132,11 @@ form {
     justify-content: space-between;
 }
 
-#placar, #quantidade-cartas {
+#quantidade-cartas h2{
     color: white;
-}
+    padding: 6px 7px;
+    display: inline-block;
+    margin: 0;}
 footer{
     color: #fff;
     background-color: rgba(0, 0, 0, 0.563);

@@ -59,10 +59,18 @@ var piccolo = {
     img:"https://cdna.artstation.com/p/assets/images/images/019/993/046/large/eduardo-medeiros-prancheta-7.jpg?1565888007"
 };
 
-  var cartas = [vegeta, goku, gohan, broly, piccolo, trunks];
-  var cartaMaquina;
-  var cartaJogador;
+var cartas = [vegeta, goku, gohan, broly, piccolo, trunks];
+var cartaMaquina;
+var cartaJogador;
+var pontosJogador = 0;
+var pontosMaquina = 0;
 
+mostraPlacar()
+
+function mostraPlacar(){
+  var divPlacar = document.getElementById("placar")
+  divPlacar.innerHTML = `<h2>Jogador ${pontosJogador} X ${pontosMaquina} Maquina</h2>`
+}
 function sortearCarta(){
   var numCartaMaquina = parseInt(Math.random() * cartas.length)
   cartaMaquina = cartas[numCartaMaquina]
@@ -79,55 +87,70 @@ function sortearCarta(){
 
 function exibeCartaJogador(){
   var divcartaJogador = document.getElementById("carta-jogador")
-  divcartaJogador.style.backgroundImage = `url(${cartaJogador.img})`
 
-  divcartaJogador.innerHTML = `<div id="opcoes" class="carta-status">
+  divcartaJogador.innerHTML = `<img src="${cartaJogador.img}" id="carta-jogador"> <div id="opcoes" class="carta-status">
   <input type="button" name="atributo" onclick="atributoJogador('ki')"><br>
   <input type="button" name="atributo" onclick="atributoJogador('tecnica')"><br>
   <input type="button" name="atributo" onclick="atributoJogador('velocidade')"><br>
-  <input type="button" name="atributo" onclick="atributoJogador('transformacoes')"><br></div>`
+  <input type="button" name="atributo" onclick="atributoJogador('transformacoes')"></div>`
 }
 
 function atributoJogador(jogadorAtributoscheck){
+  var vencedor = document.getElementById("quantidade-cartas")
   if (jogadorAtributoscheck == "ki"){
     if(cartaJogador.atributos.ki > cartaMaquina.atributos.ki){
-      console.log('venceu')
+      vencedor.innerHTML = "<h2>Venceu</h2>"
+      pontosJogador++;
     }else if(cartaJogador.atributos.ki < cartaMaquina.atributos.ki){
-      console.log('perdeu')
+      vencedor.innerHTML = "<h2>Perdeu</h2>"
+      pontosMaquina ++;
     }else{
-      console.log('impatou')
+      vencedor.innerHTML = "<h2>Empate</h2>"
     }
   }else if (jogadorAtributoscheck == "tecnica"){
     if(cartaJogador.atributos.tecnicas > cartaMaquina.atributos.tecnicas){
-      console.log('venceu')
+      vencedor.innerHTML = "<h2>Venceu</h2>"
+      pontosJogador++;
     }else if(cartaJogador.atributos.tecnicas < cartaMaquina.atributos.tecnicas){
-      console.log('perdeu')
+      vencedor.innerHTML = "<h2>Perdeu</h2>"
+      pontosMaquina ++;
     }else{
-      console.log('impatou')
+      vencedor.innerHTML = "<h2>Empate</h2>"
     }
   }else if (jogadorAtributoscheck == "velocidade"){
     if(cartaJogador.atributos.velocidade > cartaMaquina.atributos.velocidade){
-      console.log('venceu')
+      vencedor.innerHTML = "<h2>Venceu</h2>"
+      pontosJogador++;
     }else if(cartaJogador.atributos.velocidade < cartaMaquina.atributos.velocidade){
-      console.log('perdeu')
+      vencedor.innerHTML = "<h2>Perdeu</h2>"
+      pontosMaquina ++;
     }else{
-      console.log('impatou')
+      vencedor.innerHTML = "<h2>Empate</h2>"
     }
   }else if (jogadorAtributoscheck == "transformacoes"){
     if(cartaJogador.atributos.transformacoes > cartaMaquina.atributos.transformacoes){
-      console.log('venceu')
+      vencedor.innerHTML = "<h2>Venceu</h2>"
+      pontosJogador++;
     }else if(cartaJogador.atributos.transformacoes < cartaMaquina.atributos.transformacoes){
-      console.log('perdeu')
+      vencedor.innerHTML = "<h2>Perdeu</h2>"
+      pontosMaquina ++;
     }else{
-      console.log('impatou')
+      vencedor.innerHTML = "<h2>Empate</h2>"
     }
   }
-
+  mostraPlacar()
   exibeCartaMaquina()
 }
 
 function exibeCartaMaquina(){
   var divCartaMaquina = document.getElementById("carta-maquina")
-  divCartaMaquina.style.backgroundImage = `url(${cartaMaquina.img})`
-  divCartaMaquina.innerHTML = "<img src=''>"
+  divCartaMaquina.innerHTML = `<img src='${cartaMaquina.img}' id="carta-maquina">`
+
+  setTimeout(function(){ novaRodada(); }, 3000);
+}
+
+function novaRodada(){
+  var divCartaMaquina = document.getElementById("carta-maquina")
+  divCartaMaquina.innerHTML = `<img src='https://cdnb.artstation.com/p/assets/images/images/019/993/153/large/eduardo-medeiros-verso-card.jpg?1565888227' id="carta-maquina">`
+  sortearCarta()
 }
