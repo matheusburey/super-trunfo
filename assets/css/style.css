@@ -1,146 +1,97 @@
-html, body ,figure, img, div,input, textarea,p ,h1 ,h2, h3 ,h4 ,li , ul, a, main{
+html, body, figure, img, div, input, p, h1, h2, h3, h4, main {
     margin: 0;
     padding: 0;
+    border: none;
     box-sizing: border-box;
-    list-style: none;
-    text-decoration: none;
 }
 
 body {
     font-family: 'Roboto Mono', monospace;
-    min-height: 854px;
-    background-image: url('https://cdn.wallpapersafari.com/69/83/H14S5y.jpg');
-    background-color: #000000;
+    background-image: url('../imagens/background.webp');
     background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-}
-
-.container {
-    text-align: center;
-    padding: 20px;
+    height: 100vh;
 }
 
 .page-title {
+    padding: 10px;
     color: #ffffff;
-    font-size: 50px;
     text-align: center;
     letter-spacing: 3px;
     text-shadow: 2px 0 0 #2e58b1, -2px 0 0 #2e58b1, 0 2px 0 #2e58b1, 0 -2px 0 #2e58b1, 1px 1px #2e58b1, -1px -1px 0 #2e58b1, 1px -1px 0 #2e58b1, -1px 1px 0 #2e58b1;
 }
-header{
-    display: flex;
-    justify-content: space-between;
-}
-.page-logo{
-    max-width: 200px;
-    padding: 7px;
-    background-color: black;
+
+#screen {
+    text-align: center;
+    padding: 20px;
+    height: 70%;
 }
 
-button {
-    width: 10rem;
-    max-width: 10rem;
-    padding: .8rem 1.5rem;
-    margin: 2rem auto;
-    border-radius: 5px;
+.initiDiv {
+    padding: 25px;
+    max-width: 600px;
+    margin: 20% auto;
+    background-color: #ccc;
+    border-radius: 10px;
+}
+.game-options {
+    height: 45px;
+    width: 120px;
+    margin: 0 0 5px;
     border: none;
-    font-size: 1rem;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 5px;
+  }
+.button {
+    width: 200px;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    font-size: 19px;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background-color: #ccc;
 }
 
 h2 {
-    color: rgb(0, 0, 0);
     letter-spacing: 3px;
     margin-bottom: 8px;
     text-shadow: 2px 0 0 #2e58b1, -2px 0 0 #2e58b1, 0 2px 0 #2e58b1, 0 -2px 0 #2e58b1, 1px 1px #2e58b1, -1px -1px 0 #2e58b1, 1px -1px 0 #2e58b1, -1px 1px 0 #2e58b1;
 }
 
-#carta-jogador, #carta-maquina {
-    width: 360px;
-    height: 500px;
-    overflow: visible;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    margin: 0 auto;
-    display: flex;
-    align-items: flex-end;
-    position: relative;
-}
-
-.fundo {
-    width: 360px;
-    height: 500px;
-    max-width: 100%;
-}
-
-.carta-status {
-    position: absolute;
-    margin: 10px;
-    color: white;
-    z-index: 2;
-}
-
-.carta-status input {
-    margin: 2px 2px 0 4px;
-    border: 0;
-    padding: 0.6rem 10.4rem;
-    color: #00000000;
-    background-color: #00000000;
-    cursor: pointer;
-}
-
-.carta-status p {
-    margin-bottom: 2rem;
-}
-
-.resultado-final {
-    color: white;
-    font-size: 2rem;
-    text-transform: uppercase;
-    padding: 1rem;
-    border: 2px solid black;
-    background-color: black;
-}
-
-.--spacing {
-    margin-left: 2.5rem;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.wrapper {
-    display: flex;
-    flex-direction: column;
-}
-
-.carta-subtitle {
-    z-index: 2;
-    position: absolute;
-    top: 16px;
-    left: 37px;
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
-#cartas {
+.cartas {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
 }
 
-#quantidade-cartas h2{
-    color: white;
-    padding: 6px 7px;
-    display: inline-block;
-    margin: 0;}
 footer{
     color: #fff;
     background-color: rgba(0, 0, 0, 0.563);
-    margin-top: 50px;
+    margin-top: 30px;
     padding: 20px;
     text-align: center;
+}
+
+@media screen and (min-width: 500px){
+    .page-title {
+        padding: 20px;
+        font-size: 50px;
+    }
+
+    .initiDiv {
+        margin: 10% auto;
+    }
+
+    .divCarta {
+        width: 45%;
+        display: inline-block;
+    }
+
+    .cartas {
+        width: auto;
+        height: 500px;
+    }
 }

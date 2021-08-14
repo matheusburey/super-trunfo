@@ -1,16 +1,34 @@
+const screen = document.getElementById('screen');
 const nomeCartas = Object.keys(objetoCartas);
-var cartaMaquina;
-var cartaJogador;
-var pontosJogador = 0;
-var pontosMaquina = 0;
+const objPlayers = {
+  player: {
+    caratas: '',
+    pontos: 0
+  },
+  pc: {
+    caratas: '',
+    pontos: 0
+  }
+};
 
-mostraPlacar()
+let cartaMaquina = document.createElement('div');
+let cartaJogador = document.createElement('div');
 
-function mostraPlacar(){
-  var divPlacar = document.getElementById("placar")
-  divPlacar.innerHTML = `<h2>Jogador ${pontosJogador} X ${pontosMaquina} Maquina</h2>`
+
+const functionRoutes = (event) => {
+  const clickedTargetId = event.target.id;
+  console.log()
+  if (clickedTargetId === "startGame") {
+    reset(sortearCarta);
+  }
+};
+
+const mostraPlacar = () => {
+  var divPlacar = document.createElement("p");
+  divPlacar.innerHTML = `<h2>Jogador ${objPlayers.player.pontos} X ${objPlayers.pc.pontos} Maquina</h2>`
 }
-function sortearCarta(){
+
+function sortearCarta() {
   var numCartaMaquina = parseInt(Math.random() * nomeCartas.length)
   let indexObjetoMaquina = nomeCartas[numCartaMaquina]
   cartaMaquina = objetoCartas[indexObjetoMaquina]
@@ -26,7 +44,7 @@ function sortearCarta(){
   exibeCartaJogador()
 }
 
-function exibeCartaJogador(){
+function exibeCartaJogador() {
   var divcartaJogador = document.getElementById("carta-jogador")
 
   divcartaJogador.innerHTML = `<img src="${cartaJogador.img}" id="carta-jogador"> <div id="opcoes" class="carta-status">
@@ -36,46 +54,46 @@ function exibeCartaJogador(){
   <input type="button" name="atributo" onclick="atributoJogador('transformacoes')"></div>`
 }
 
-function atributoJogador(jogadorAtributoscheck){
+function atributoJogador(jogadorAtributoscheck) {
   var vencedor = document.getElementById("quantidade-cartas")
-  if (jogadorAtributoscheck == "ki"){
-    if(cartaJogador.atributos.ki > cartaMaquina.atributos.ki){
+  if (jogadorAtributoscheck == "ki") {
+    if (cartaJogador.atributos.ki > cartaMaquina.atributos.ki) {
       vencedor.innerHTML = "<h2>Venceu</h2>"
       pontosJogador++;
-    }else if(cartaJogador.atributos.ki < cartaMaquina.atributos.ki){
+    } else if (cartaJogador.atributos.ki < cartaMaquina.atributos.ki) {
       vencedor.innerHTML = "<h2>Perdeu</h2>"
-      pontosMaquina ++;
-    }else{
+      pontosMaquina++;
+    } else {
       vencedor.innerHTML = "<h2>Empate</h2>"
     }
-  }else if (jogadorAtributoscheck == "tecnica"){
-    if(cartaJogador.atributos.tecnicas > cartaMaquina.atributos.tecnicas){
+  } else if (jogadorAtributoscheck == "tecnica") {
+    if (cartaJogador.atributos.tecnicas > cartaMaquina.atributos.tecnicas) {
       vencedor.innerHTML = "<h2>Venceu</h2>"
       pontosJogador++;
-    }else if(cartaJogador.atributos.tecnicas < cartaMaquina.atributos.tecnicas){
+    } else if (cartaJogador.atributos.tecnicas < cartaMaquina.atributos.tecnicas) {
       vencedor.innerHTML = "<h2>Perdeu</h2>"
-      pontosMaquina ++;
-    }else{
+      pontosMaquina++;
+    } else {
       vencedor.innerHTML = "<h2>Empate</h2>"
     }
-  }else if (jogadorAtributoscheck == "velocidade"){
-    if(cartaJogador.atributos.velocidade > cartaMaquina.atributos.velocidade){
+  } else if (jogadorAtributoscheck == "velocidade") {
+    if (cartaJogador.atributos.velocidade > cartaMaquina.atributos.velocidade) {
       vencedor.innerHTML = "<h2>Venceu</h2>"
       pontosJogador++;
-    }else if(cartaJogador.atributos.velocidade < cartaMaquina.atributos.velocidade){
+    } else if (cartaJogador.atributos.velocidade < cartaMaquina.atributos.velocidade) {
       vencedor.innerHTML = "<h2>Perdeu</h2>"
-      pontosMaquina ++;
-    }else{
+      pontosMaquina++;
+    } else {
       vencedor.innerHTML = "<h2>Empate</h2>"
     }
-  }else if (jogadorAtributoscheck == "transformacoes"){
-    if(cartaJogador.atributos.transformacoes > cartaMaquina.atributos.transformacoes){
+  } else if (jogadorAtributoscheck == "transformacoes") {
+    if (cartaJogador.atributos.transformacoes > cartaMaquina.atributos.transformacoes) {
       vencedor.innerHTML = "<h2>Venceu</h2>"
       pontosJogador++;
-    }else if(cartaJogador.atributos.transformacoes < cartaMaquina.atributos.transformacoes){
+    } else if (cartaJogador.atributos.transformacoes < cartaMaquina.atributos.transformacoes) {
       vencedor.innerHTML = "<h2>Perdeu</h2>"
-      pontosMaquina ++;
-    }else{
+      pontosMaquina++;
+    } else {
       vencedor.innerHTML = "<h2>Empate</h2>"
     }
   }
@@ -83,15 +101,16 @@ function atributoJogador(jogadorAtributoscheck){
   exibeCartaMaquina()
 }
 
-function exibeCartaMaquina(){
+function exibeCartaMaquina() {
   var divCartaMaquina = document.getElementById("carta-maquina")
   divCartaMaquina.innerHTML = `<img src='${cartaMaquina.img}' id="carta-maquina">`
 
-  setTimeout(function(){ novaRodada(); }, 3000);
+  setTimeout(function () { novaRodada(); }, 3000);
 }
 
-function novaRodada(){
-  var divCartaMaquina = document.getElementById("carta-maquina")
-  divCartaMaquina.innerHTML = `<img src='https://cdnb.artstation.com/p/assets/images/images/019/993/153/large/eduardo-medeiros-verso-card.jpg?1565888227' id="carta-maquina">`
-  sortearCarta()
+const reset = (callback) => {
+  screen.innerHTML = ""
+  callback()
 }
+
+screen.addEventListener("click", functionRoutes)
