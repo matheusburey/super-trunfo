@@ -1,28 +1,50 @@
 const screen = document.getElementById('screen');
-const nomeCartas = Object.keys(objetoCartas);
+const nameCards = Object.keys(objetoCartas);
 const objPlayers = {
   player: {
-    caratas: '',
-    pontos: 0
+    cards: '',
+    points: 0
   },
   pc: {
-    caratas: '',
-    pontos: 0
+    cards: '',
+    points: 0
   }
 };
-
-let cartaMaquina = document.createElement('div');
-let cartaJogador = document.createElement('div');
-
 
 const functionRoutes = (event) => {
-  const clickedTargetId = event.target.id;
-  console.log()
+  const clickedTarget = event.target
+  const clickedTargetId = clickedTarget.id;
+  console.log(clickedTarget);
   if (clickedTargetId === "startGame") {
-    reset(sortearCarta);
+    startGame(clickedTarget);
   }
 };
 
+const startGame = clickedTarget => {
+  let scoreboard = document.createElement('div');
+  let scoreboardText = document.createElement('h2');
+  let cardPc = document.createElement('div');
+  let cardPlayer = document.createElement('div');
+  let imgCardPc = document.createElement('img');
+  let imgCardPlayer = document.createElement('img');
+
+  clickedTarget.parentElement.classList.add('hidden');
+  scoreboardText.innerHTML = 'Jogador 0 X 0 Maquina'
+  scoreboard.classList = 'scoreboard';
+  cardPc.classList = 'div-carta';
+  cardPlayer.classList = 'div-carta';
+  imgCardPc.src = 'assets/imagens/fundo.jpg';
+  imgCardPc.classList = 'cartas';
+  imgCardPlayer.src = 'assets/imagens/fundo.jpg'
+  imgCardPlayer.classList = 'cartas';
+
+  scoreboard.appendChild(scoreboardText)
+  cardPc.appendChild(imgCardPc);
+  cardPlayer.appendChild(imgCardPlayer);
+  screen.appendChild(scoreboard);
+  screen.appendChild(cardPlayer);
+  screen.appendChild(cardPc);
+}
 const mostraPlacar = () => {
   var divPlacar = document.createElement("p");
   divPlacar.innerHTML = `<h2>Jogador ${objPlayers.player.pontos} X ${objPlayers.pc.pontos} Maquina</h2>`

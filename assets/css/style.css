@@ -2,14 +2,23 @@ html, body, figure, img, div, input, p, h1, h2, h3, h4, main {
     margin: 0;
     padding: 0;
     border: none;
-    box-sizing: border-box;
 }
 
 body {
     font-family: 'Roboto Mono', monospace;
     background-image: url('../imagens/background.webp');
     background-size: cover;
-    height: 100vh;
+    background-repeat: no-repeat;
+}
+.hidden {
+    display: none;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .page-title {
@@ -23,29 +32,28 @@ body {
 #screen {
     text-align: center;
     padding: 20px;
-    height: 70%;
 }
 
 .initiDiv {
     padding: 25px;
     max-width: 600px;
-    margin: 20% auto;
+    margin: 0 auto;
     background-color: #ccc;
     border-radius: 10px;
 }
+
 .game-options {
     height: 45px;
     width: 120px;
-    margin: 0 0 5px;
+    margin-bottom: 5px;
     border: none;
     border-radius: 5px;
     font-size: 16px;
-    padding-left: 5px;
-  }
+}
+
 .button {
     width: 200px;
     padding: 10px;
-    margin: 10px 0;
     border-radius: 10px;
     border: none;
     font-size: 19px;
@@ -59,7 +67,6 @@ body {
 
 h2 {
     letter-spacing: 3px;
-    margin-bottom: 8px;
     text-shadow: 2px 0 0 #2e58b1, -2px 0 0 #2e58b1, 0 2px 0 #2e58b1, 0 -2px 0 #2e58b1, 1px 1px #2e58b1, -1px -1px 0 #2e58b1, 1px -1px 0 #2e58b1, -1px 1px 0 #2e58b1;
 }
 
@@ -70,7 +77,6 @@ h2 {
 footer{
     color: #fff;
     background-color: rgba(0, 0, 0, 0.563);
-    margin-top: 30px;
     padding: 20px;
     text-align: center;
 }
@@ -81,17 +87,13 @@ footer{
         font-size: 50px;
     }
 
-    .initiDiv {
-        margin: 10% auto;
-    }
-
-    .divCarta {
-        width: 45%;
+    .div-carta {
+        padding: 30px;
         display: inline-block;
     }
 
     .cartas {
         width: auto;
-        height: 500px;
+        height: 440px;;
     }
 }
