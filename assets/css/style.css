@@ -70,10 +70,34 @@ h2 {
     text-shadow: 2px 0 0 #2e58b1, -2px 0 0 #2e58b1, 0 2px 0 #2e58b1, 0 -2px 0 #2e58b1, 1px 1px #2e58b1, -1px -1px 0 #2e58b1, 1px -1px 0 #2e58b1, -1px 1px 0 #2e58b1;
 }
 
-.cartas {
-    width: 100%;
+.div-cards {
+    padding: 30px;
+    position: relative;
 }
 
+.cards {
+    width: 100%;
+    height: fit-content;
+}
+
+.carta-status {
+    bottom: 40px;
+    left: 44px;
+    position: absolute;
+}
+
+.carta-status input{
+    box-sizing: border-box;
+    font-size: 0;
+    height: 42px;
+    margin-bottom: 2px;
+    width: 346px;
+    background-color: #0000;
+}
+
+.carta-status input:hover {
+    background-color: #cccccc8f;
+}
 footer{
     color: #fff;
     background-color: rgba(0, 0, 0, 0.563);
@@ -87,12 +111,21 @@ footer{
         font-size: 50px;
     }
 
-    .div-carta {
-        padding: 30px;
+    .div-cards {
         display: inline-block;
     }
 
-    .cartas {
+    .carta-status {
+        bottom: 39px;
+        left: 40px;
+    }
+
+    .carta-status input{
+        height: 30px;
+        width: 265px;
+    }
+
+    .cards {
         width: auto;
         height: 440px;;
     }
