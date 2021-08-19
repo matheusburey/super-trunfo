@@ -137,7 +137,7 @@ const objetoCartas = {
       velocidade: 81,
       transformacoes: 3
     },
-    img:"/assets/imagens/goku-black.jpg"
+    img:"assets/imagens/goku-black.jpg"
   },
   gotenks: {
     nome: "gotenks",
