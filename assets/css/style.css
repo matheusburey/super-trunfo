@@ -66,31 +66,32 @@ body {
 }
 
 h2 {
+    font-size: 17px;
     letter-spacing: 3px;
     text-shadow: 2px 0 0 #2e58b1, -2px 0 0 #2e58b1, 0 2px 0 #2e58b1, 0 -2px 0 #2e58b1, 1px 1px #2e58b1, -1px -1px 0 #2e58b1, 1px -1px 0 #2e58b1, -1px 1px 0 #2e58b1;
 }
 
 .div-cards {
-    padding: 30px;
+    padding: 5px;
+    width: 250px;
+    display: inline-block;
     position: relative;
 }
 
 .cards {
     width: 100%;
-    height: fit-content;
 }
 
 .cards-status {
-    bottom: 40px;
+    bottom: 13px;
     left: 0;
     position: absolute;
 }
 
 .cards-status input{
     box-sizing: border-box;
-    height: 38px;
-    margin-bottom: 1px;
-    width: 322px;
+    height: 28px;
+    width: 234px;
     background-color: #0000;
 }
 
@@ -105,23 +106,33 @@ footer{
     text-align: center;
 }
 
-@media screen and (min-width: 500px){
+@media screen and (min-width: 700px){
+
+    h2 {
+        font-size: 24px;
+    }
+
     .page-title {
         padding: 20px;
         font-size: 50px;
     }
 
     .div-cards {
+        width: 300px;
         display: inline-block;
-    }
-    
-    .cards-status input{
-        height: 30px;
-        width: 265px;
+        padding: 15px;
+        position: relative;
     }
 
-    .cards {
-        width: auto;
-        height: 440px;;
+    .cards-status {
+        bottom: 23px;
+        left: 0;
+        position: absolute;
     }
+
+    .cards-status input{
+        height: 35px;
+        width: 280px;
+    }
+
 }
