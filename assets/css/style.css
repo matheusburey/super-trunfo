@@ -80,24 +80,24 @@ h2 {
     height: fit-content;
 }
 
-.carta-status {
+.cards-status {
     bottom: 40px;
-    left: 44px;
+    left: 0;
     position: absolute;
 }
 
-.carta-status input{
+.cards-status input{
     box-sizing: border-box;
-    font-size: 0;
-    height: 42px;
-    margin-bottom: 2px;
-    width: 346px;
+    height: 38px;
+    margin-bottom: 1px;
+    width: 322px;
     background-color: #0000;
 }
 
-.carta-status input:hover {
+.cards-status input:hover {
     background-color: #cccccc8f;
 }
+
 footer{
     color: #fff;
     background-color: rgba(0, 0, 0, 0.563);
@@ -114,13 +114,8 @@ footer{
     .div-cards {
         display: inline-block;
     }
-
-    .carta-status {
-        bottom: 39px;
-        left: 40px;
-    }
-
-    .carta-status input{
+    
+    .cards-status input{
         height: 30px;
         width: 265px;
     }
