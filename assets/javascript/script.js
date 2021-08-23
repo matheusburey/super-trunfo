@@ -58,7 +58,7 @@ const startGame = clickedTarget => {
 };
 
 const showScore = () => {
-  let scoreboard = document.querySelector(".scoreboard h2");
+  const scoreboard = document.querySelector(".scoreboard h2");
   scoreboard.innerText = `Jogador ${objPlayers.player.points} X ${objPlayers.pc.points} Maquina`
 };
 
@@ -96,7 +96,7 @@ function displaysPlayerCard() {
 }
 
 function playerAttribute(selectedAttribute) {
-  var vencedor = document.querySelector(".winner")
+  const vencedor = document.querySelector(".winner")
   const playerSelectedAttribute = cardPlayer.atributos[selectedAttribute];
   const pcSelectedAttribute = cartaMaquina.atributos[selectedAttribute];
 
@@ -109,13 +109,14 @@ function playerAttribute(selectedAttribute) {
   } else {
     vencedor.innerHTML = "<h2>Empate</h2>"
   }
-  showScore()
-  exibeCartaMaquina()
+
+  showScore();
+  exibeCartaMaquina();
 }
 
 function exibeCartaMaquina() {
-  let divCards = document.getElementsByClassName("cards");
-  divCards[1].src = cartaMaquina.img
+  const divCards = document.getElementsByClassName("cards");
+  divCards[1].src = cartaMaquina.img;
 
   setWaitingTime(4000,reset);
 }
@@ -125,10 +126,10 @@ const setWaitingTime = (time, callBack) =>{
 };
 
 const reset = () => {
-  let divCards = document.getElementsByClassName("cards");
+  const divCards = document.getElementsByClassName("cards");
   divCards[0].src = 'assets/imagens/fundo.jpg';
   divCards[1].src = 'assets/imagens/fundo.jpg';
-  sortearCarta()
+  sortearCarta();
 }
 
 screen.addEventListener("click", functionRoutes);
