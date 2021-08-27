@@ -58,8 +58,10 @@ const functionRoutes = (event) => {
     cleanScreen();
     startGame();
     setWaitingTime(500, drawLetter, objetoCartas);
+    addInputAtributs();
   };
   if(clickedTarget.name === "atributo"){
+    changeClassInputAttributes('add')
     setWaitingTime(200, playerAttribute, {clickedTargetId, objPlayers});
     setWaitingTime(200, exibeCartaMaquina, objPlayers);
     setWaitingTime(200, showScore);
@@ -126,10 +128,18 @@ const drawLetter = (objetoCards) => {
 };
 
 function displaysPlayerCard() {
-  const attributesValue = ['ki', "tecnicas", "velocidade", "transformacoes"];
-  const divCardPlayer = document.querySelector("#card-player");
   const imgCardPlayer = document.querySelector("#card-player .cards");
+  imgCardPlayer.src = objPlayers.returnImgaen('player');
+  flipCard(imgCardPlayer);
+
+  changeClassInputAttributes('remove');
+}
+
+const addInputAtributs = () => {
+  const divCardPlayer = document.querySelector("#card-player");
+  const attributesValue = ['ki', "tecnicas", "velocidade", "transformacoes"];
   const divInputs = document.createElement('div');
+
   for(let i = 0; i < 4; i++){
     const input = document.createElement('input');
     input.type = 'button';
@@ -137,10 +147,10 @@ function displaysPlayerCard() {
     input.id = attributesValue[i];
 
     divInputs.appendChild(input);
-  }
-  flipCard(imgCardPlayer);
-  imgCardPlayer.src = objPlayers.returnImgaen('player');
-  divInputs.className = "cards-status";
+  };
+
+  divInputs.classList.add("cards-status",'hidden');
+
   divCardPlayer.appendChild(divInputs);
 }
 
@@ -164,10 +174,10 @@ const exibeCartaMaquina = (objPlayers) => {
   const divCards = document.getElementsByClassName("cards");
   flipCard(divCards[1]);
   divCards[1].src = objPlayers.returnImgaen('pc');
-  setWaitingTime(5000, divertLetter);
+  setWaitingTime(5000, turnCard);
 }
 
-const divertLetter = () => {
+const turnCard = () => {
   const divCards = document.getElementsByClassName("cards");
   divCards[0].src = 'assets/imagens/fundo.jpg';
   flipCard(divCards[0]);
@@ -206,6 +216,11 @@ const cleanScreen = () => {
 const flipCard = (imgCard) => {
   imgCard.classList.add('flip');
   setTimeout(() => imgCard.classList.remove('flip'), 500);
+}
+
+const changeClassInputAttributes = (clas) =>{
+  const divInputs = document.querySelector('.cards-status');
+  divInputs.classList[clas]('hidden');
 }
 
 initialOptions();
