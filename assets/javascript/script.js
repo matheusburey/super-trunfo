@@ -170,11 +170,13 @@ const exibeCartaMaquina = (objPlayers) => {
 const divertLetter = () => {
   const divCards = document.getElementsByClassName("cards");
   divCards[0].src = 'assets/imagens/fundo.jpg';
+  flipCard(divCards[0]);
   divCards[1].src = 'assets/imagens/fundo.jpg';
+  flipCard(divCards[1]);
 
   objPlayers.player.amountCards--;
   if(objPlayers.player.amountCards > 0){
-    drawLetter(objetoCartas);
+    setWaitingTime(600, drawLetter, objetoCartas);
   }else {
     reset(objPlayers);
   }
@@ -203,7 +205,7 @@ const cleanScreen = () => {
 
 const flipCard = (imgCard) => {
   imgCard.classList.add('flip');
-  setTimeout(() => imgCard.classList.remove('flip'), 800);
+  setTimeout(() => imgCard.classList.remove('flip'), 500);
 }
 
 initialOptions();
