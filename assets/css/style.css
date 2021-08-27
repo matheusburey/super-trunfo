@@ -45,7 +45,7 @@ body {
 .game-options {
     height: 45px;
     width: 120px;
-    margin-bottom: 5px;
+    margin: 5px;
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -131,7 +131,7 @@ footer{
     }
 
     .cards-status input{
-        height: 35px;
+        height: 34px;
         width: 280px;
     }
 
