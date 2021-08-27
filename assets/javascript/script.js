@@ -60,9 +60,9 @@ const functionRoutes = (event) => {
     setWaitingTime(500, drawLetter, objetoCartas);
   };
   if(clickedTarget.name === "atributo"){
-    setWaitingTime(5000, playerAttribute, {clickedTargetId, objPlayers});
-    setWaitingTime(5000, exibeCartaMaquina, objPlayers);
-    setWaitingTime(5000, showScore);
+    setWaitingTime(200, playerAttribute, {clickedTargetId, objPlayers});
+    setWaitingTime(200, exibeCartaMaquina, objPlayers);
+    setWaitingTime(200, showScore);
   };
 };
 
@@ -81,16 +81,16 @@ const startGame = () => {
   const imgCardPlayer = document.createElement('img');
 
   scoreboardText.innerHTML = 'Jogador 0 X 0 Maquina';
-  scoreboard.classList = 'scoreboard';
+  scoreboard.className = 'scoreboard';
   winner.className = 'winner';
-  cardPc.classList = 'div-cards';
+  cardPc.className = 'div-cards';
   cardPc.id = 'card-pc';
-  cardPlayer.classList = 'div-cards';
+  cardPlayer.className = 'div-cards';
   cardPlayer.id = 'card-player';
   imgCardPc.src = 'assets/imagens/fundo.jpg';
-  imgCardPc.classList = 'cards';
+  imgCardPc.className = 'cards';
   imgCardPlayer.src = 'assets/imagens/fundo.jpg';
-  imgCardPlayer.classList = 'cards';
+  imgCardPlayer.className = 'cards';
 
   scoreboard.appendChild(scoreboardText);
   scoreboard.appendChild(winner);
@@ -138,9 +138,9 @@ function displaysPlayerCard() {
 
     divInputs.appendChild(input);
   }
-
+  flipCard(imgCardPlayer);
   imgCardPlayer.src = objPlayers.returnImgaen('player');
-  divInputs.classList = "cards-status";
+  divInputs.className = "cards-status";
   divCardPlayer.appendChild(divInputs);
 }
 
@@ -162,8 +162,8 @@ function playerAttribute({clickedTargetId, objPlayers}) {
 
 const exibeCartaMaquina = (objPlayers) => {
   const divCards = document.getElementsByClassName("cards");
+  flipCard(divCards[1]);
   divCards[1].src = objPlayers.returnImgaen('pc');
-
   setWaitingTime(5000, divertLetter);
 }
 
@@ -181,7 +181,7 @@ const divertLetter = () => {
 }
 
 const setWaitingTime = (time, callBack, value) =>{
-  setTimeout(function () { callBack(value); }, time);
+  setTimeout(() => callBack(value), time);
 };
 
 const reset = (objPlayers) => {
@@ -199,6 +199,11 @@ const reset = (objPlayers) => {
 
 const cleanScreen = () => {
   screen.innerText = ''
+}
+
+const flipCard = (imgCard) => {
+  imgCard.classList.add('flip');
+  setTimeout(() => imgCard.classList.remove('flip'), 800);
 }
 
 initialOptions();

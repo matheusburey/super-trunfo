@@ -1,4 +1,4 @@
-html, body, figure, img, div, input, p, h1, h2, h3, h4, main {
+html, body, img, div, input, p, h1, h2, h3, h4, main {
     margin: 0;
     padding: 0;
     border: none;
@@ -109,6 +109,16 @@ footer{
     background-color: rgba(0, 0, 0, 0.563);
     padding: 20px;
     text-align: center;
+}
+
+.flip {
+    animation: flip 0.3s;
+}
+
+@keyframes flip {
+    0% { transform: scaleX(1); }
+    50% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
 }
 
 @media screen and (min-width: 700px){
