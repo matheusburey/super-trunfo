@@ -47,7 +47,7 @@ const initialOptions = () => {
   div.appendChild(select);
   div.appendChild(button);
   screen.appendChild(div);
-}
+};
 
 const functionRoutes = (event) => {
   const clickedTarget = event.target;
@@ -60,8 +60,10 @@ const functionRoutes = (event) => {
     setWaitingTime(500, drawLetter, objetoCartas);
   };
   if(clickedTarget.name === "atributo"){
-    playerAttribute(clickedTargetId);
-  }
+    setWaitingTime(5000, playerAttribute, {clickedTargetId, objPlayers});
+    setWaitingTime(5000, exibeCartaMaquina, objPlayers);
+    setWaitingTime(5000, showScore);
+  };
 };
 
 const amountOfCards = ({player}) => {
@@ -80,11 +82,11 @@ const startGame = () => {
 
   scoreboardText.innerHTML = 'Jogador 0 X 0 Maquina';
   scoreboard.classList = 'scoreboard';
-  winner.className = 'winner'
+  winner.className = 'winner';
   cardPc.classList = 'div-cards';
-  cardPc.id = 'card-pc'
+  cardPc.id = 'card-pc';
   cardPlayer.classList = 'div-cards';
-  cardPlayer.id = 'card-player'
+  cardPlayer.id = 'card-player';
   imgCardPc.src = 'assets/imagens/fundo.jpg';
   imgCardPc.classList = 'cards';
   imgCardPlayer.src = 'assets/imagens/fundo.jpg';
@@ -101,11 +103,11 @@ const startGame = () => {
 
 const showScore = () => {
   const scoreboard = document.querySelector(".scoreboard h2");
-  scoreboard.innerText = `Jogador ${objPlayers.player.points} X ${objPlayers.pc.points} Maquina`
+  scoreboard.innerText = `Jogador ${objPlayers.player.points} X ${objPlayers.pc.points} Maquina`;
 };
 
 const random = (maxValue) => {
-  return parseInt(Math.random() * maxValue)
+  return parseInt(Math.random() * maxValue);
 }
 
 const returnLetters = (objetoCards) => {
@@ -125,14 +127,14 @@ const drawLetter = (objetoCards) => {
 
 function displaysPlayerCard() {
   const attributesValue = ['ki', "tecnicas", "velocidade", "transformacoes"];
-  const divCardPlayer = document.querySelector("#card-player")
+  const divCardPlayer = document.querySelector("#card-player");
   const imgCardPlayer = document.querySelector("#card-player .cards");
   const divInputs = document.createElement('div');
   for(let i = 0; i < 4; i++){
     const input = document.createElement('input');
     input.type = 'button';
     input.name = 'atributo';
-    input.id = attributesValue[i]
+    input.id = attributesValue[i];
 
     divInputs.appendChild(input);
   }
@@ -142,28 +144,23 @@ function displaysPlayerCard() {
   divCardPlayer.appendChild(divInputs);
 }
 
-function playerAttribute(selectedAttribute) {
-  console.log(selectedAttribute)
-  const vencedor = document.querySelector(".winner")
-  const playerSelectedAttribute = objPlayers.returnAtributs('player',selectedAttribute);
-  const pcSelectedAttribute = objPlayers.returnAtributs('pc',selectedAttribute);
-  console.log(playerSelectedAttribute,pcSelectedAttribute)
+function playerAttribute({clickedTargetId, objPlayers}) {
+  const vencedor = document.querySelector(".winner");
+  const playerSelectedAttribute = objPlayers.returnAtributs('player',clickedTargetId);
+  const pcSelectedAttribute = objPlayers.returnAtributs('pc',clickedTargetId);
 
   if (playerSelectedAttribute > pcSelectedAttribute) {
-    vencedor.innerHTML = "<h2>Venceu</h2>"
+    vencedor.innerHTML = "<h2>Venceu</h2>";
     objPlayers.player.points++;
   } else if (playerSelectedAttribute < pcSelectedAttribute) {
-    vencedor.innerHTML = "<h2>Perdeu</h2>"
+    vencedor.innerHTML = "<h2>Perdeu</h2>";
     objPlayers.pc.points++;
   } else {
-    vencedor.innerHTML = "<h2>Empate</h2>"
+    vencedor.innerHTML = "<h2>Empate</h2>";
   }
-
-  showScore();
-  exibeCartaMaquina();
 }
 
-const exibeCartaMaquina = () => {
+const exibeCartaMaquina = (objPlayers) => {
   const divCards = document.getElementsByClassName("cards");
   divCards[1].src = objPlayers.returnImgaen('pc');
 
@@ -179,7 +176,7 @@ const divertLetter = () => {
   if(objPlayers.player.amountCards > 0){
     drawLetter(objetoCartas);
   }else {
-    reset();
+    reset(objPlayers);
   }
 }
 
@@ -187,17 +184,17 @@ const setWaitingTime = (time, callBack, value) =>{
   setTimeout(function () { callBack(value); }, time);
 };
 
-const reset = () => {
-  cleanScreen()
+const reset = (objPlayers) => {
+  cleanScreen();
 
-  objPlayers.player.cards = []
-  objPlayers.player.index = 0
-  objPlayers.player.points = 0
+  objPlayers.player.cards = [];
+  objPlayers.player.index = 0;
+  objPlayers.player.points = 0;
 
-  objPlayers.pc.cards = []
-  objPlayers.pc.index = 0
-  objPlayers.pc.points = 0
-  initialOptions()
+  objPlayers.pc.cards = [];
+  objPlayers.pc.index = 0;
+  objPlayers.pc.points = 0;
+  initialOptions();
 }
 
 const cleanScreen = () => {

@@ -6,8 +6,9 @@ html, body, figure, img, div, input, p, h1, h2, h3, h4, main {
 
 body {
     font-family: 'Roboto Mono', monospace;
-    background-image: url('../imagens/background.webp');
+    background-image: url('../imagens/background-mobli.jpeg');
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
 }
 .hidden {
@@ -65,6 +66,10 @@ body {
     background-color: #ccc;
 }
 
+.scoreboard {
+    height: 50px;
+}
+
 h2 {
     font-size: 17px;
     letter-spacing: 3px;
@@ -107,6 +112,12 @@ footer{
 }
 
 @media screen and (min-width: 700px){
+    body {
+        font-family: 'Roboto Mono', monospace;
+        background-image: url('../imagens/background.webp');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
 
     h2 {
         font-size: 24px;
