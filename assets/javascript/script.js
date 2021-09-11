@@ -9,7 +9,7 @@ const objPlayers = {
     cards: '',
     points: 0
   },
-  returnImgaen: function(player){
+  returnImagen: function(player){
     return this[player].cards.img;
   },
   returnAtributs: function(player, atribut) {
@@ -63,7 +63,7 @@ const functionRoutes = (event) => {
   if(clickedTarget.name === "atributo"){
     changeClassInputAttributes('add')
     setWaitingTime(200, playerAttribute, {clickedTargetId, objPlayers});
-    setWaitingTime(200, exibeCartaMaquina, objPlayers);
+    setWaitingTime(200, showCardPc, objPlayers);
     setWaitingTime(200, showScore);
   };
 };
@@ -129,8 +129,8 @@ const drawLetter = (objetoCards) => {
 
 function displaysPlayerCard() {
   const imgCardPlayer = document.querySelector("#card-player .cards");
-  imgCardPlayer.src = objPlayers.returnImgaen('player');
-  flipCard(imgCardPlayer);
+  imgCardPlayer.src = objPlayers.returnImagen('player');
+  animationEffects(500, imgCardPlayer, 'flip');
 
   changeClassInputAttributes('remove');
 }
@@ -155,36 +155,42 @@ const addInputAtributs = () => {
 }
 
 function playerAttribute({clickedTargetId, objPlayers}) {
+  const divCards = document.getElementsByClassName("cards");
   const vencedor = document.querySelector(".winner");
   const playerSelectedAttribute = objPlayers.returnAtributs('player',clickedTargetId);
   const pcSelectedAttribute = objPlayers.returnAtributs('pc',clickedTargetId);
+  let playerWinner = 'Empate';
 
   if (playerSelectedAttribute > pcSelectedAttribute) {
-    vencedor.innerHTML = "<h2>Venceu</h2>";
+    playerWinner = "Venceu";
     objPlayers.player.points++;
-  } else if (playerSelectedAttribute < pcSelectedAttribute) {
-    vencedor.innerHTML = "<h2>Perdeu</h2>";
-    objPlayers.pc.points++;
-  } else {
-    vencedor.innerHTML = "<h2>Empate</h2>";
+    animationEffects(1100, divCards[0], 'winner');
   }
+  if (playerSelectedAttribute < pcSelectedAttribute) {
+    playerWinner = "Perdeu";
+    objPlayers.pc.points++;
+    animationEffects(1100, divCards[1], 'winner');
+  }
+
+  vencedor.innerHTML = `<h2>${playerWinner}</h2>`;
 }
 
-const exibeCartaMaquina = (objPlayers) => {
-  const divCards = document.getElementsByClassName("cards");
-  flipCard(divCards[1]);
-  divCards[1].src = objPlayers.returnImgaen('pc');
+const showCardPc = (objPlayers) => {
+  const divCards = document.querySelector("#card-pc .cards");
+  animationEffects(500, divCards, 'flip');
+  divCards.src = objPlayers.returnImagen('pc');
   setWaitingTime(5000, turnCard);
 }
 
 const turnCard = () => {
   const divCards = document.getElementsByClassName("cards");
   divCards[0].src = 'assets/imagens/fundo.jpg';
-  flipCard(divCards[0]);
+  animationEffects(500, divCards[0], 'flip');
   divCards[1].src = 'assets/imagens/fundo.jpg';
-  flipCard(divCards[1]);
+  animationEffects(500, divCards[1], 'flip');
 
   objPlayers.player.amountCards--;
+
   if(objPlayers.player.amountCards > 0){
     setWaitingTime(600, drawLetter, objetoCartas);
   }else {
@@ -213,9 +219,9 @@ const cleanScreen = () => {
   screen.innerText = ''
 }
 
-const flipCard = (imgCard) => {
-  imgCard.classList.add('flip');
-  setTimeout(() => imgCard.classList.remove('flip'), 500);
+const animationEffects = (time, imgCard, className) => {
+  imgCard.classList.add(className);
+  setTimeout(() => imgCard.classList.remove(className), time);
 }
 
 const changeClassInputAttributes = (clas) =>{
