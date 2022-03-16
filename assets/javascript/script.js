@@ -76,15 +76,12 @@ const amountOfCards = ({player}) => {
 
 const startGame = () => {
   const scoreboard = document.createElement('div');
-  const scoreboardText = document.createElement('h2');
   const winner = document.createElement('di');
   const cardPc = document.createElement('div');
   const cardPlayer = document.createElement('div');
   const imgCardPc = document.createElement('img');
   const imgCardPlayer = document.createElement('img');
 
-  scoreboardText.innerHTML = 'Jogador 0 X 0 Maquina';
-  scoreboard.className = 'scoreboard';
   winner.className = 'winner';
   cardPc.className = 'div-cards';
   cardPc.id = 'card-pc';
@@ -95,11 +92,8 @@ const startGame = () => {
   imgCardPlayer.src = 'assets/imagens/fundo.jpg';
   imgCardPlayer.className = 'cards';
 
-  scoreboard.appendChild(scoreboardText);
-  scoreboard.appendChild(winner);
   cardPc.appendChild(imgCardPc);
   cardPlayer.appendChild(imgCardPlayer);
-  screen.appendChild(scoreboard);
   screen.appendChild(cardPlayer);
   screen.appendChild(cardPc);
 };
