@@ -1,25 +1,45 @@
-import listCards from './cards.js'
+import listCards from './cards.js';
+
 const screen = document.getElementById('screen');
-const objPlayers = {
+
+const stausGame = {
   player: {
-    cards: '',
+    cards: [],
     points: 0,
-    amountCards: 0
   },
   pc: {
-    cards: '',
+    cards: [],
     points: 0
   },
+  amountCards: 0,
   returnImagen: function(player){
-    return this[player].cards.img;
+    const i = this.amountCards - 1;
+    return this[player].cards[i].img;
   },
   returnAtributs: function(player, atribut) {
-    return this[player].cards.atributos[atribut];
+    const i = this.amountCards - 1;
+    return this[player].cards[i].atributos[atribut];
+  },
+  amountOfCards: function() {
+    const number = document.getElementById('numberCards');
+    this.amountCards = Number(number.value);
+  }, 
+  selectCards: function() {
+    const maxValue = listCards.length;
+    for(let i = 0; i < this.amountCards * 2; i++){
+      const index = parseInt(Math.random() * maxValue);
+      const card = listCards[index]
+      if (i % 2 === 0){
+        this.player.cards.push(card)
+      } else {
+        this.pc.cards.push(card)
+      }
+    }
   }
 };
 
 const initialOptions = () => {
-  const div = document.createElement('div');
+  const divIniti = document.createElement('div');
   const span = document.createElement('span');
   const select = document.createElement('select');
   const options1 = document.createElement('option');
@@ -27,7 +47,7 @@ const initialOptions = () => {
   const options3 = document.createElement('option');
   const button = document.createElement('button');
 
-  div.className = 'initiDiv';
+  divIniti.className = 'initi-div';
   span.innerText = 'Deck com:';
   select.className = 'game-options';
   select.id = 'numberCards'
@@ -44,44 +64,42 @@ const initialOptions = () => {
   select.appendChild(options1);
   select.appendChild(options2);
   select.appendChild(options3);
-  div.appendChild(span);
-  div.appendChild(select);
-  div.appendChild(button);
-  screen.appendChild(div);
+  divIniti.appendChild(span);
+  divIniti.appendChild(select);
+  divIniti.appendChild(button);
+  screen.appendChild(divIniti);
+  screen.addEventListener("click", functionRoutes);
 };
 
 const functionRoutes = (event) => {
   const clickedTarget = event.target;
   const clickedTargetId = clickedTarget.id;
-  
+
   if (clickedTargetId === "startGame") {
-    amountOfCards(objPlayers);
+    stausGame.amountOfCards()
+    stausGame.selectCards()
     cleanScreen();
     startGame();
-    setWaitingTime(500, drawLetter);
     addInputAtributs();
+    displaysPlayerCard();
   };
   if(clickedTarget.name === "atributo"){
     changeClassInputAttributes('add')
-    setWaitingTime(200, playerAttribute, {clickedTargetId, objPlayers});
-    setWaitingTime(200, showCardPc, objPlayers);
+    playerAttribute(clickedTargetId);
+    showCardPc(stausGame);
     setWaitingTime(200, showScore);
   };
 };
 
-const amountOfCards = ({player}) => {
-  const number = document.getElementById('numberCards');
-  player.amountCards = Number(number.value);
-};
-
 const startGame = () => {
-  const scoreboard = document.createElement('div');
+  const scoreboard = document.querySelector('h2.scoreboard');
   const winner = document.createElement('di');
   const cardPc = document.createElement('div');
   const cardPlayer = document.createElement('div');
   const imgCardPc = document.createElement('img');
   const imgCardPlayer = document.createElement('img');
 
+  scoreboard.classList.remove("hidden")
   winner.className = 'winner';
   cardPc.className = 'div-cards';
   cardPc.id = 'card-pc';
@@ -99,30 +117,13 @@ const startGame = () => {
 };
 
 const showScore = () => {
-  const scoreboard = document.querySelector(".scoreboard h2");
-  scoreboard.innerText = `Jogador ${objPlayers.player.points} X ${objPlayers.pc.points} Maquina`;
+  const scoreboard = document.querySelector("h2.scoreboard");
+  scoreboard.innerText = `Jogador ${stausGame.player.points} X ${stausGame.pc.points} Maquina`;
 };
 
-const random = (maxValue) => {
-  return parseInt(Math.random() * maxValue);
-}
-
-const selectCards = () => {
-  let indexCard = random(listCards.length);
-  return listCards[indexCard];
-};
-
-const drawLetter = () => {
-  objPlayers.pc.cards = selectCards();
-
-  objPlayers.player.cards = selectCards();
-
-  displaysPlayerCard();
-};
-
-function displaysPlayerCard() {
+const displaysPlayerCard = () => {
   const imgCardPlayer = document.querySelector("#card-player .cards");
-  imgCardPlayer.src = objPlayers.returnImagen('player');
+  imgCardPlayer.src = stausGame.returnImagen('player');
   animationEffects(500, imgCardPlayer, 'flip');
 
   changeClassInputAttributes('remove');
@@ -147,25 +148,25 @@ const addInputAtributs = () => {
   divCardPlayer.appendChild(divInputs);
 }
 
-function playerAttribute({clickedTargetId, objPlayers}) {
+function playerAttribute(target) {
   const divCards = document.getElementsByClassName("cards");
   const vencedor = document.querySelector(".winner");
-  const playerSelectedAttribute = objPlayers.returnAtributs('player',clickedTargetId);
-  const pcSelectedAttribute = objPlayers.returnAtributs('pc',clickedTargetId);
+  const playerSelectedAttribute = stausGame.returnAtributs('player',target);
+  const pcSelectedAttribute = stausGame.returnAtributs('pc',target);
   let playerWinner = 'Empate';
 
   if (playerSelectedAttribute > pcSelectedAttribute) {
     playerWinner = "Venceu";
-    objPlayers.player.points++;
+    stausGame.player.points++;
     animationEffects(1100, divCards[0], 'winner');
   }
   if (playerSelectedAttribute < pcSelectedAttribute) {
     playerWinner = "Perdeu";
-    objPlayers.pc.points++;
+    stausGame.pc.points++;
     animationEffects(1100, divCards[1], 'winner');
   }
 
-  vencedor.innerHTML = `<h2>${playerWinner}</h2>`;
+  //vencedor.innerHTML = `<h2>${playerWinner}</h2>`;
 }
 
 const showCardPc = (objPlayers) => {
@@ -182,12 +183,12 @@ const turnCard = () => {
   divCards[1].src = 'assets/imagens/fundo.jpg';
   animationEffects(500, divCards[1], 'flip');
 
-  objPlayers.player.amountCards--;
+  stausGame.amountCards--;
 
-  if(objPlayers.player.amountCards > 0){
-    setWaitingTime(600, drawLetter);
+  if(stausGame.amountCards > 0){
+    displaysPlayerCard()
   }else {
-    reset(objPlayers);
+    reset(stausGame);
   }
 }
 
@@ -223,4 +224,3 @@ const changeClassInputAttributes = (clas) =>{
 }
 
 initialOptions();
-screen.addEventListener("click", functionRoutes);

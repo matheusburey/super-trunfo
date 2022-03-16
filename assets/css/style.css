@@ -32,7 +32,7 @@ body {
   text-shadow: 2px 0 0 var(--color-bord), -2px 0 0 var(--color-bord), 0 2px 0 var(--color-bord), 0 -2px 0 var(--color-bord), 1px 1px var(--color-bord), -1px -1px 0 var(--color-bord), 1px -1px 0 var(--color-bord), -1px 1px 0 var(--color-bord);
 }
 
-.initiDiv {
+.initi-div {
   padding: 25px;
   max-width: 600px;
   margin: 0 auto;
