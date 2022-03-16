@@ -1,169 +1,162 @@
+:root {
+  --color-bord: #2e58b1;
+}
+
 html, body, img, div, input, p, h1, h2, h3, h4, main {
-    margin: 0;
-    padding: 0;
-    border: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  user-select: none;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Roboto Mono', monospace;
-    background-image: url('../imagens/background-mobli.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-.hidden {
-    display: none;
+  font-family: 'Roboto Mono', monospace;
+  background-image: url('../imagens/background-mobli.jpeg');
+  backdrop-filter: brightness(0.5);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  text-align: center;
 }
 
-.container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.hidden {
+  visibility: hidden;
 }
 
 .page-title {
-    padding: 10px;
-    color: #ffffff;
-    text-align: center;
-    letter-spacing: 3px;
-    text-shadow: 2px 0 0 #2e58b1, -2px 0 0 #2e58b1, 0 2px 0 #2e58b1, 0 -2px 0 #2e58b1, 1px 1px #2e58b1, -1px -1px 0 #2e58b1, 1px -1px 0 #2e58b1, -1px 1px 0 #2e58b1;
-}
-
-#screen {
-    text-align: center;
-    padding: 20px;
+  padding: 10px;
+  color: #ffffff;
+  letter-spacing: 3px;
+  text-shadow: 2px 0 0 var(--color-bord), -2px 0 0 var(--color-bord), 0 2px 0 var(--color-bord), 0 -2px 0 var(--color-bord), 1px 1px var(--color-bord), -1px -1px 0 var(--color-bord), 1px -1px 0 var(--color-bord), -1px 1px 0 var(--color-bord);
 }
 
 .initiDiv {
-    padding: 25px;
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #ccc;
-    border-radius: 10px;
+  padding: 25px;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #ccc;
+  border-radius: 10px;
+  margin-top: 10%;
 }
 
 .game-options {
-    height: 45px;
-    width: 120px;
-    margin: 5px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
+  height: 45px;
+  width: 120px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
 .button {
-    width: 200px;
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
-    font-size: 19px;
-    cursor: pointer;
-    transition: 0.3s;
+  width: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 19px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .button:hover {
-    background-color: #ccc;
+  background-color: #ccc;
 }
 
 .scoreboard {
-    height: 50px;
+  color: #FFF;
+  font-size: 17px;
+  letter-spacing: 3px;
+  text-align: center;
+  text-shadow: 2px 0 0 var(--color-bord), -2px 0 0 var(--color-bord), 0 2px 0 var(--color-bord), 0 -2px 0 var(--color-bord), 1px 1px var(--color-bord), -1px -1px 0 var(--color-bord), 1px -1px 0 var(--color-bord), -1px 1px 0 var(--color-bord);
 }
 
-h2 {
-    font-size: 17px;
-    letter-spacing: 3px;
-    text-shadow: 2px 0 0 #2e58b1, -2px 0 0 #2e58b1, 0 2px 0 #2e58b1, 0 -2px 0 #2e58b1, 1px 1px #2e58b1, -1px -1px 0 #2e58b1, 1px -1px 0 #2e58b1, -1px 1px 0 #2e58b1;
-}
 
 .div-cards {
-    padding: 5px;
-    width: 250px;
-    display: inline-block;
-    position: relative;
+  width: 200px;
+  display: inline-block;
+  position: relative;
 }
 
 .cards {
-    width: 100%;
+  width: 100%;
 }
 
 .cards-status {
-    bottom: 13px;
-    left: 0;
-    position: absolute;
+  bottom: 13px;
+  left: 0;
+  position: absolute;
 }
 
 .cards-status input {
-    box-sizing: border-box;
-    height: 28px;
-    width: 234px;
-    background-color: #0000;
+  box-sizing: border-box;
+  height: 28px;
+  width: 234px;
+  background-color: #0000;
 }
 
 .cards-status input:hover {
-    background-color: #cccccc8f;
+  background-color: #cccccc8f;
 }
 
 footer {
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.563);
-    padding: 20px;
-    text-align: center;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.563);
+  padding: 5px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: 10px;
 }
 
 .winner {
-    animation: winner 1s;
+  animation: winner 1s;
 }
 
 @keyframes winner {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
   100% { transform: scale(1); }
 }
 
 .flip {
-    animation: flip 0.3s;
+  animation: flip 0.3s;
 }
 
 @keyframes flip {
-    0% { transform: scaleX(1); }
-    50% { transform: scaleX(0); }
+  0% { transform: scaleX(1); }
+  50% { transform: scaleX(0); }
   100% { transform: scaleX(1); }
 }
 
 @media screen and (min-width: 700px){
-    body {
-        font-family: 'Roboto Mono', monospace;
-        background-image: url('../imagens/background.webp');
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
+  body {
+    background-image: url('../imagens/background.webp');
+  }
 
-    h2 {
-        font-size: 24px;
-    }
+  .page-title {
+    padding: 10px;
+    font-size: 50px;
+  }
 
-    .page-title {
-        padding: 20px;
-        font-size: 50px;
-    }
+  .scoreboard {
+    font-size: 20px;
+  }
 
-    .div-cards {
-        width: 300px;
-        display: inline-block;
-        padding: 15px;
-        position: relative;
-    }
+  .div-cards {
+    width: 300px;
+    display: inline-block;
+    margin: 15px;
+  }
 
-    .cards-status {
-        bottom: 23px;
-        left: 0;
-        position: absolute;
-    }
+  .cards-status {
+    bottom: 10px;
+  }
 
-    .cards-status input{
-        height: 34px;
-        width: 280px;
-    }
+  .cards-status input{
+    height: 34px;
+    width: 280px;
+  }
 
 }
