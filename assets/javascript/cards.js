@@ -1,5 +1,5 @@
-const objetoCartas = {
-  android17: {
+const listCards = [
+  {
     nome: "android 17",
     atributos: {
       ki: 7300,
@@ -9,7 +9,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/android17.jpg"
   },
-  android18: {
+  {
     nome: "android 18",
     atributos: {
       ki: 7300,
@@ -19,7 +19,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/android18.jpg"
   },
-  aniraza: {
+  {
     nome: "aniraza",
     atributos: {
       ki: 9000,
@@ -29,7 +29,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/aniraza.jpg"
   },
-  bardock: {
+  {
     nome: "bardock",
     atributos: {
       ki: 8000,
@@ -39,7 +39,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/bardock.jpg"
   },
-  botamo: {
+  {
     nome: "botamo",
     atributos: {
       ki: 5000,
@@ -49,7 +49,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/botamo.jpg"
   },
-  broly: {
+  {
     nome: "Broly",
     atributos: {
       ki: 9000,
@@ -59,7 +59,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/broly.jpg"
   },
-  caulifla: {
+  {
     nome: "caulifla",
     atributos: {
       ki: 8100,
@@ -69,7 +69,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/caulifla.jpg"
   },
-  cell: {
+  {
     nome: "cell",
     atributos: {
       ki: 7400,
@@ -79,7 +79,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/cell.jpg"
   },
-  dyspo: {
+  {
     nome: "dyspo",
     atributos: {
       ki: 8000,
@@ -89,7 +89,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/dyspo.jpg"
   },
-  freeza: {
+  {
     nome: "freeza",
     atributos: {
       ki: 8200,
@@ -99,7 +99,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/freeza.jpg"
   },
-  frost: {
+  {
     nome: "frost",
     atributos: {
       ki: 7100,
@@ -109,7 +109,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/frost.jpg"
   },
-  gogeta: {
+  {
     nome: "gogeta",
     atributos: {
       ki: 9500,
@@ -119,7 +119,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/gogeta.jpg"
   },
-  gohan: {
+  {
     nome: "Gohan",
     atributos: {
       ki: 7800,
@@ -129,7 +129,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/gohan.jpg"
   },
-  'goku-black': {
+  {
     nome: "goku black",
     atributos: {
       ki: 9000,
@@ -139,7 +139,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/goku-black.jpg"
   },
-  gotenks: {
+  {
     nome: "gotenks",
     atributos: {
       ki: 8000,
@@ -149,7 +149,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/gotenks.jpg"
   },
-  hit: {
+  {
     nome: "hit",
     atributos: {
       ki: 8200,
@@ -159,7 +159,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/hit.jpg"
   },
-  jiren: {
+  {
     nome: "jiren",
     atributos: {
       ki: 10000,
@@ -169,7 +169,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/jiren.jpg"
   },
-  kale: {
+  {
     nome: "kale",
     atributos: {
       ki: 8300,
@@ -179,7 +179,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/kale.jpg"
   },
-  kefla: {
+  {
     nome: "kefla",
     atributos: {
       ki: 9200,
@@ -189,7 +189,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/kefla.jpg"
   },
-  kuririn: {
+  {
     nome: "kuririn",
     atributos: {
       ki: 5500,
@@ -199,7 +199,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/kuririn.jpg"
   },
-  kyabe: {
+  {
     nome: "kyabe",
     atributos: {
       ki: 8000,
@@ -209,7 +209,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/kyabe.jpg"
   },
-  magetta: {
+  {
     nome: "magetta",
     atributos: {
       ki: 6600,
@@ -219,7 +219,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/magetta.jpg"
   },
-  'majin-boo': {
+  {
     nome: "majin boo",
     atributos: {
       ki: 8300,
@@ -229,7 +229,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/majin-boo.jpg"
   },
-  'mestre-kame': {
+  {
     nome: "mestre kame",
     atributos: {
       ki: 4000,
@@ -239,7 +239,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/mestre-kame.jpg"
   },
-  'mirai trunks': {
+  {
     nome: "Mirai Trunks",
     atributos: {
       ki: 8100,
@@ -249,7 +249,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/mirai-trunks.jpg"
   },
-  piccolo: {
+  {
     nome: "Piccolo",
     atributos: {
       ki: 7000,
@@ -259,7 +259,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/piccolo.jpg"
   },
-  pilina: {
+  {
     nome: "pilina",
     atributos: {
       ki: 7500,
@@ -269,7 +269,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/pilina.jpg"
   },
-  ribrianne: {
+  {
     nome: "ribrianne",
     atributos: {
       ki: 6700,
@@ -279,7 +279,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/ribrianne.jpg"
   },
-  saonel: {
+  {
     nome: "saonel",
     atributos: {
       ki: 7400,
@@ -289,7 +289,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/saonel.jpg"
   },
-  shenlong: {
+  {
     nome: "shenlong",
     atributos: {
       ki: 100000,
@@ -299,7 +299,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/shenlong.jpg"
   },
-  'Son-goku': {
+  {
     nome: "Son goku",
     atributos: {
       ki: 8700,
@@ -309,7 +309,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/son-goku.jpg"
   },
-  tenshinhan: {
+  {
     nome: "tenshinhan",
     atributos: {
       ki: 6500,
@@ -319,7 +319,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/tenshinhan.jpg"
   },
-  toppo: {
+  {
     nome: "toppo",
     atributos: {
       ki: 9200,
@@ -329,7 +329,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/toppo.jpg"
   },
-  vegeta: {
+  {
     nome: "Vegeta",
     atributos: {
       ki: 8500,
@@ -339,7 +339,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/vegeta.jpg"
   },
-  vegetto: {
+  {
     nome: "vegetto",
     atributos: {
       ki: 9200,
@@ -349,7 +349,7 @@ const objetoCartas = {
     },
     img:"assets/imagens/vegetto.jpg"
   },
-  zamasu: {
+  {
     nome: "zamasu",
     atributos: {
       ki: 9400,
@@ -359,4 +359,6 @@ const objetoCartas = {
     },
     img:"assets/imagens/zamasu.jpg"
   }
-};
+];
+
+export default listCards;
