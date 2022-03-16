@@ -1,3 +1,4 @@
+import listCards from './cards.js'
 const screen = document.getElementById('screen');
 const objPlayers = {
   player: {
@@ -57,7 +58,7 @@ const functionRoutes = (event) => {
     amountOfCards(objPlayers);
     cleanScreen();
     startGame();
-    setWaitingTime(500, drawLetter, objetoCartas);
+    setWaitingTime(500, drawLetter);
     addInputAtributs();
   };
   if(clickedTarget.name === "atributo"){
@@ -112,17 +113,15 @@ const random = (maxValue) => {
   return parseInt(Math.random() * maxValue);
 }
 
-const returnLetters = (objetoCards) => {
-  const nameCards = Object.keys(objetoCards);
-  let index = random(nameCards.length);
-  let indexCard = nameCards[index];
-  return objetoCards[indexCard];
+const selectCards = () => {
+  let indexCard = random(listCards.length);
+  return listCards[indexCard];
 };
 
-const drawLetter = (objetoCards) => {
-  objPlayers.pc.cards = returnLetters(objetoCards);
+const drawLetter = () => {
+  objPlayers.pc.cards = selectCards();
 
-  objPlayers.player.cards = returnLetters(objetoCards);
+  objPlayers.player.cards = selectCards();
 
   displaysPlayerCard();
 };
@@ -192,7 +191,7 @@ const turnCard = () => {
   objPlayers.player.amountCards--;
 
   if(objPlayers.player.amountCards > 0){
-    setWaitingTime(600, drawLetter, objetoCartas);
+    setWaitingTime(600, drawLetter);
   }else {
     reset(objPlayers);
   }
