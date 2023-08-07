@@ -2,7 +2,14 @@
   --color-bord: #2e58b1;
 }
 
-html, body, img, div, input, p, h1, h2, h3, h4, main {
+html,
+body,
+img,
+div,
+input,
+p,
+h1,
+h2 {
   margin: 0;
   padding: 0;
   border: none;
@@ -11,7 +18,7 @@ html, body, img, div, input, p, h1, h2, h3, h4, main {
 }
 
 body {
-  font-family: 'Roboto Mono', monospace;
+  font-family: monospace;
   background-image: url('../imagens/background-mobli.jpeg');
   backdrop-filter: brightness(0.5);
   background-size: cover;
@@ -35,26 +42,22 @@ body {
 .initi-div {
   padding: 25px;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 10% auto 0;
   background-color: #ccc;
   border-radius: 10px;
-  margin-top: 10%;
+  font-size: 16px;
 }
 
 .game-options {
-  height: 45px;
-  width: 120px;
-  margin: 5px;
-  border: none;
+  padding: 12px 15px;
+  margin: 10px;
   border-radius: 5px;
   font-size: 16px;
 }
 
 .button {
-  width: 200px;
-  padding: 10px;
+  padding: 12px 25px;
   border-radius: 10px;
-  border: none;
   font-size: 19px;
   cursor: pointer;
   transition: 0.3s;
@@ -77,19 +80,20 @@ body {
   width: 200px;
   display: inline-block;
   position: relative;
-	transform-style: preserve-3d;
+  transform-style: preserve-3d;
   transition: 0.5s;
 }
 
 .div-cards img {
   width: 100%;
-	position: absolute;
+  position: absolute;
   backface-visibility: hidden;
-	display: block;
+  display: block;
 }
 
-.front, .cards-status {
-	transform: rotateY(180deg);
+.front,
+.cards-status {
+  transform: rotateY(180deg);
 }
 
 .cards-status {
@@ -121,21 +125,35 @@ footer {
   animation: winner 1s;
 }
 
+.flip-card {
+  animation: 0.5s linear 0s 1 normal both running flip;
+}
+
 @keyframes winner {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes flip {
-	0% {
+  0% {
     -webkit-transform: rotateY(0);
     transform: rotateY(0);
   }
+
   50% {
     -webkit-transform: rotateY(90deg);
     transform: rotateY(90deg);
   }
+
   100% {
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
@@ -147,17 +165,19 @@ footer {
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
   }
+
   50% {
     -webkit-transform: rotateY(90deg);
     transform: rotateY(90deg);
   }
+
   100% {
     -webkit-transform: rotateY(0);
     transform: rotateY(0);
   }
 }
 
-@media screen and (min-width: 700px){
+@media screen and (min-width: 700px) {
   body {
     background-image: url('../imagens/background.webp');
   }
@@ -180,7 +200,7 @@ footer {
     top: 19em;
   }
 
-  .cards-status input{
+  .cards-status input {
     height: 34px;
     width: 280px;
   }

@@ -1,18 +1,10 @@
+import { createApp } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+import template from "./template.js";
 import { statusGame } from './statusGame.js'
 import { initialOptions, cleanScreen, toggleHidden, createElementCards, addInputAtributs, showScore } from './screen.js';
 
-const screen = document.getElementById('screen');
+// const screen = document.getElementById('screen');
 
-const functionRoutes = ({target}) => {
-	const callBack = target.getAttribute('data-callback');
-
-	if (callBack === 'startGame') {
-		startGame();
-	};
-	if(callBack === 'attributes'){
-		funsemNome(target);
-	};
-};
 
 const startGame = () => {
 	statusGame.amountOfCards()
@@ -21,20 +13,20 @@ const startGame = () => {
 	toggleHidden('.scoreboard', 'remove')
 	createElementCards(screen, statusGame, 'player')
 	createElementCards(screen, statusGame, 'pc')
-	setWaitingTime(1000, flipUnflip,'#card-player');
+	setWaitingTime(1000, flipUnflip, '#card-player');
 	setWaitingTime(1500, addInputAtributs);
 };
 
-const funsemNome = ({id}) => {
+const funsemNome = ({ id }) => {
 	toggleHidden('.cards-status')
 	flipUnflip('#card-pc');
 	const winer = checkWinner(id);
 	const [pointPlayer, pointPc] = statusGame.updateScore(winer)
-	showScore({pointPlayer, pointPc});
+	showScore({ pointPlayer, pointPc });
 	setWaitingTime(2000, turnCard);
 };
 
-const flipUnflip = (idElement, flip=true) => {
+const flipUnflip = (idElement, flip = true) => {
 	const card = document.querySelector(idElement);
 	if (flip) {
 		card.style.animation = 'flip 0.5s linear both'
@@ -45,8 +37,8 @@ const flipUnflip = (idElement, flip=true) => {
 }
 
 const checkWinner = (target) => {
-	const playerSelectedAttribute = statusGame.returnAtributs('player',target);
-	const pcSelectedAttribute = statusGame.returnAtributs('pc',target);
+	const playerSelectedAttribute = statusGame.returnAtributs('player', target);
+	const pcSelectedAttribute = statusGame.returnAtributs('pc', target);
 	let playerWinner = false;
 	if (playerSelectedAttribute > pcSelectedAttribute) {
 		playerWinner = 'player';
@@ -59,17 +51,17 @@ const checkWinner = (target) => {
 
 const turnCard = () => {
 	statusGame.endRound();
-	if (statusGame.amountCards > 0){
-			flipUnflip('#card-pc', false);
-			flipUnflip('#card-player', false);
+	if (statusGame.amountCards > 0) {
+		flipUnflip('#card-pc', false);
+		flipUnflip('#card-player', false);
 
-			setTimeout(() => {
+		setTimeout(() => {
 
-				updatecard();
-				toggleHidden('.cards-status', 'remove')
-				setWaitingTime(1500, flipUnflip,'#card-player');
+			updatecard();
+			toggleHidden('.cards-status', 'remove')
+			setWaitingTime(1500, flipUnflip, '#card-player');
 
-				}, 200);
+		}, 200);
 	} else {
 		reset(statusGame);
 	}
@@ -81,7 +73,7 @@ const updatecard = () => {
 	cards[1].src = statusGame.returnImagen('pc');
 };
 
-const setWaitingTime = (time, callBack, value) =>{
+const setWaitingTime = (time, callBack, value) => {
 	setTimeout(() => callBack(value), time);
 };
 
@@ -98,5 +90,7 @@ const reset = (objPlayers) => {
 	initialOptions(screen);
 }
 
-initialOptions(screen);
-screen.addEventListener('click', functionRoutes);
+/* initialOptions(screen);
+screen.addEventListener('click', functionRoutes);s */
+
+createApp(template).mount('#app')

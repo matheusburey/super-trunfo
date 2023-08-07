@@ -32,7 +32,7 @@ const initialOptions = (screen) => {
 	screen.appendChild(divIniti);
 };
 
-const toggleHidden = (element, toggle = 'add') =>{
+const toggleHidden = (element, toggle = 'add') => {
 	const getElement = document.querySelector(element);
 	getElement.classList[toggle]('hidden');
 }
@@ -42,7 +42,7 @@ const cleanScreen = (screen) => {
 	screen.innerText = ''
 }
 
-const createElementCards = (screen, statusGame, player) =>{
+const createElementCards = (screen, statusGame, player) => {
 	const card = document.createElement('div');
 	const front = document.createElement('img');
 	const back = document.createElement('img');
@@ -64,7 +64,7 @@ const addInputAtributs = () => {
 	const attributesValue = ['ki', 'tecnicas', 'velocidade', 'transformacoes'];
 	const divInputs = document.createElement('div');
 
-	for(let i = 0; i < 4; i++){
+	for (let i = 0; i < 4; i++) {
 		const input = document.createElement('input');
 		input.type = 'button';
 		input.id = attributesValue[i];
@@ -77,7 +77,7 @@ const addInputAtributs = () => {
 	divCardPlayer.appendChild(divInputs);
 };
 
-const showScore = ({pointPlayer, pointPc}) => {
+const showScore = ({ pointPlayer, pointPc }) => {
 	const scoreboard = document.querySelector('h2.scoreboard');
 	scoreboard.innerText = `Jogador ${pointPlayer} X ${pointPc} Maquina`;
 };
