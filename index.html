@@ -1,21 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="./assets/imagens/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Super trunfo</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="./assets/imagens/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <title>Super trunfo</title>
-</head>
+  <body>
+    <div class="container" id="app">
+      <header>
+        <h1 class="page-title">Super Trunfo</h1>
+        <h2
+          class="scoreboard hidden"
+          :style="{ 'display': gameScreen ? 'block' : 'none' }"
+          v-if="gameScreen === 2"
+        >
+          Jogador {{ player.points }} X {{ pc.points }} Maquina
+        </h2>
+      </header>
 
-<body>
-  <div id="app">
-    <my-header></my-header>
-    <game></game>
-    <my-footer></my-footer>
-  </div>
-  <script src="assets/javascript/index.js" type="module"></script>
-</body>
+      <main
+        class="game-area hidden"
+        :style="{ 'display': gameScreen ? 'flex' : 'none' }"
+      >
+        <div class="game-options" v-if="gameScreen === 1">
+          <span>Deck com: </span>
+          <select
+            name="amount-cards"
+            class="game-options-select"
+            v-model="amountCards"
+          >
+            <option value="3">03 cartas</option>
+            <option value="5">05 cartas</option>
+            <option value="10">10 cartas</option>
+          </select>
+          <button type="button" class="game-options-button" @click="startGame">
+            Start Game
+          </button>
+        </div>
+        <div class="game-container-cards" v-if="gameScreen === 2">
+          <div class="card-container">
+            <div class="card" :class="{ 'is-flipped': player.flip }">
+              <div class="card-face card-back"></div>
+              <div
+                class="card-face card-front"
+                :style="'background-image: url(' + player?.currentCard?.img + ')'"
+              ></div>
+              <div class="cards-status" v-if="player.flip && !pc.flip">
+                <input type="button" value="ki" @click="checkWinner" />
+                <input type="button" value="tecnicas" @click="checkWinner" />
+                <input type="button" value="velocidade" @click="checkWinner" />
+                <input
+                  type="button"
+                  value="transformacoes"
+                  @click="checkWinner"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="card-container">
+            <div class="card" :class="{ 'is-flipped': pc.flip }">
+              <div class="card-face card-back"></div>
+              <div
+                class="card-face card-front"
+                :style="'background-image: url(' + pc?.currentCard?.img + ')'"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </main>
 
+      <footer>Desenvolvido por Matheus Henrique Burei</footer>
+    </div>
+    <script src="assets/javascript/index.js" type="module"></script>
+  </body>
 </html>

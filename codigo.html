@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carta Dragon Ball Z</title>
+  <style>
+    :root {
+      --dbz-orange: #F28C28;
+      --dbz-blue: #0F52BA;
+      --dbz-yellow: #FFD700;
+      --dbz-black: #1B1B1B;
+      --dbz-white: #F5F5F5;
+      --dbz-red: #D62828;
+      --dbz-purple: #9B5DE5;
+    }
+
+    body {
+      background-color: #121212;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card-container {
+      perspective: 1000px;
+      width: 300px;
+      height: 450px;
+    }
+
+    .card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+      cursor: pointer;
+    }
+
+    .card.is-flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+      backface-visibility: hidden;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .card-back {
+      background-image: url('assets/imagens/fundo.jpg'); /* imagem costas */
+      background-size: cover;
+      background-position: center;
+    }
+
+    .card-front {
+      background-color: var(--dbz-black);
+      color: var(--dbz-white);
+      padding: 1rem;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-front h1 {
+      color: var(--dbz-yellow);
+      border: 2px solid var(--dbz-orange);
+      padding: 0.5rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .card-front .stats {
+      margin-top: 1rem;
+    }
+
+    .card-front .stats p {
+      margin: 0.5rem 0;
+      background: var(--dbz-blue);
+      padding: 0.4rem;
+      border-radius: 4px;
+      color: var(--dbz-white);
+    }
+
+    .card-front .footer {
+      text-align: center;
+      font-weight: bold;
+      color: var(--dbz-red);
+    }
+  </style>
+</head>
+<body>
+  <div class="card-container" onclick="flipCard(this)">
+    <div class="card">
+      <!-- Verso da carta -->
+      <div class="card-face card-back"></div>
+      
+      <!-- Frente da carta -->
+      <div class="card-face card-front">
+        <h1>Goku Super Sayajin</h1>
+        <div class="stats">
+          <p>Força: 9500</p>
+          <p>Velocidade: 9000</p>
+          <p>Ki: 9700</p>
+          <p>Técnicas: 9200</p>
+          <p>Inteligência: 8500</p>
+        </div>
+        <div class="footer">★ Super Trunfo</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function flipCard(container) {
+      const card = container.querySelector('.card');
+      card.classList.toggle('is-flipped');
+    }
+  </script>
+</body>
+</html>
